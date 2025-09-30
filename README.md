@@ -82,37 +82,66 @@ Contoh output:
 ---
 
 ## 🤖 Jalankan Otomatis via GitHub Actions
-Tambahkan workflow di .github/workflows/tracker.yml:
+Tambahkan workflow di .github/workflows/portfolio.yml:
 
 ```bash
-name: Wallet Tracker
+name: Multi Wallet Portfolio Tracker
 
 on:
   schedule:
-    - cron: "0 * * * *"   # jalan tiap jam
-  workflow_dispatch:
+    - cron: "0 */6 * * *"   # jalan tiap 6 jam
+  workflow_dispatch:         # bisa run manual
 
 jobs:
-  run-tracker:
+  portfolio:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-      - run: pip install -r requirements.txt
-      - run: python wallet_tracker.py
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Multi Wallet Tracker
+        id: tracker
+        run: |
+          OUTPUT=$(python app.py)  # bisa diganti script CLI khusus
+          echo "$OUTPUT"
+          echo "result<<EOF" >> $GITHUB_OUTPUT
+          echo "$OUTPUT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
         env:
           ETHEREUM_RPC: ${{ secrets.ETHEREUM_RPC }}
           BASE_RPC: ${{ secrets.BASE_RPC }}
           ZKSYNC_RPC: ${{ secrets.ZKSYNC_RPC }}
           OPTIMISM_RPC: ${{ secrets.OPTIMISM_RPC }}
-          SONEIUM_RPC: ${{ secrets.SONEIUM_RPC }}
           COVALENT_API_KEY: ${{ secrets.COVALENT_API_KEY }}
-          WALLET_ADDRESS: ${{ secrets.WALLET_ADDRESS }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Send Telegram Notification
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+            -d text="📊 Multi-Wallet Portfolio Update:%0A%0A${{ steps.tracker.outputs.result }}"
 ```
+
+## 🔑 Rahasia / Secrets
+Tambahkan di repo kamu (Settings → Secrets → Actions):
+- ETHEREUM_RPC
+- BASE_RPC
+- ZKSYNC_RPC
+- OPTIMISM_RPC
+- COVALENT_API_KEY
+- TELEGRAM_BOT_TOKEN
+- TELEGRAM_CHAT_ID
+
+## 🔥 Hasil
+- Workflow jalan tiap 6 jam → otomatis cek semua - wallet dari wallets.json.
+- Output ringkas dikirim ke Telegram.
+- Bisa juga run manual dari tab Actions.
 
 ---
 
@@ -126,7 +155,6 @@ jobs:
 
 ## 📄 License
 MIT © Rawna22
----
 
 👉 README ini sudah:  
 - Ada **badges** (Python, License, Actions, Stars)  
