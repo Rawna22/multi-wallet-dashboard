@@ -1,0 +1,39 @@
+# --- Python umum ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- Virtualenv ---
+.venv/
+venv/
+ENV/
+env/
+*.envrc
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Environment / Secrets ---
+.env
+*.env
+.env.*
+*.key
+*.pem
+*.crt
+*.db
+*.sqlite3
+
+# --- Logs & Cache
