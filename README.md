@@ -70,26 +70,10 @@ WALLET_ADDRESS=0x2e5392f3d727a5c0e5a2e4a3530c2254dbce205d
 streamlit run app.py
 ```
 Kemudian buka browser:
-👉 http://localhost:8501
+👉 https://streamlit.io
 
 ---
 
-## 🔑 Rahasia / Secrets
-Tambahkan di repo kamu (Settings → Secrets → Actions):
-- ETHEREUM_RPC
-- BASE_RPC
-- ZKSYNC_RPC
-- OPTIMISM_RPC
-- COVALENT_API_KEY
-- TELEGRAM_BOT_TOKEN
-- TELEGRAM_CHAT_ID
-
-## 🔥 Hasil
-- Workflow jalan tiap 6 jam → otomatis cek semua - wallet dari wallets.json.
-- Output ringkas dikirim ke Telegram.
-- Bisa juga run manual dari tab Actions.
-
----
 
 ## 📌 Todo / Next Features
 ```bash
