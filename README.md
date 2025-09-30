@@ -124,5 +124,13 @@ jobs:
 [ ] Integrasi notifikasi Discord
 ```
 
+## 📄 License
+MIT © Rawna22
+---
 
-----
+👉 README ini sudah:  
+- Ada **badges** (Python, License, Actions, Stars)  
+- Ada **demo screenshot section**  
+- Ada **Fitur, Instalasi, Usage, Workflow, Todo list**  
+
+Mau saya bikinkan **versi yang sudah langsung dalam file `README.md`** biar bisa kamu commit langsung?
