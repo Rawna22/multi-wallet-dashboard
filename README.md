@@ -68,7 +68,7 @@ WALLET_ADDRESS=0x2e5392f3d727a5c0e5a2e4a3530c2254dbce205d
 ## ▶️ Menjalankan Script
 
 ```bash
-python wallet_tracker.py
+python app.py
 ```
 Contoh output:
 ```bash
