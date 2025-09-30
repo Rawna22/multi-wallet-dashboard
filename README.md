@@ -68,9 +68,9 @@ WALLET_ADDRESS=0x2e5392f3d727a5c0e5a2e4a3530c2254dbce205d
 
 ```bash
 streamlit run app.py
+```
 Kemudian buka browser:
 👉 http://localhost:8501
-```
 
 ---
 
