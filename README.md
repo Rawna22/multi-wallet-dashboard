@@ -26,8 +26,8 @@ Script Python sederhana untuk cek saldo wallet multi-chain (Ethereum, Base, zkSy
 ## 🚀 Instalasi Cepat
 
 ```bash
-git clone https://github.com/Rawna22/wallet-tracker
-cd wallet-tracker
+git clone https://github.com/Rawna22/multi-wallet-dashboard
+cd multi-wallet-dashboard
 pip install -r requirements.txt Bar chart distribusi saldo antar chain
 Pie chart distribusi token (ERC-20 via Covalent)
 ```
